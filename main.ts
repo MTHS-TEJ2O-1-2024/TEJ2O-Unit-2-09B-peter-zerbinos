@@ -7,10 +7,14 @@
 
 // variables
 let randomNumber: number = 0
+let scoreNumber = 0
 
+//setup
 randomNumber = -1
 basic.clearScreen()
 basic.showIcon(IconNames.Happy)
+
+//rock paper scissors after shake
 
 input.onGesture(Gesture.Shake, function () {
     randomNumber = randint(0, 2)
@@ -54,5 +58,21 @@ input.onGesture(Gesture.Shake, function () {
 
     // pasue and show you are ready again
     basic.pause(1000)
+    basic.showIcon(IconNames.Happy)
+})
+
+//score adder (A button)
+input.onButtonPressed(Button.A, function() {
+    scoreNumber = scoreNumber + 1
+    basic.clearScreen()
+    basic.showIcon(IconNames.Yes)
+    basic.pause(2000)
+    basic.showIcon(IconNames.Happy)
+})
+
+//score viewer (B button)
+input.onButtonPressed(Button.B, function() {
+    basic.clearScreen()
+    basic.showString('Score: ' + (scoreNumber).toString())
     basic.showIcon(IconNames.Happy)
 })
